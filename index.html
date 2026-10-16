@@ -1,13 +1,96 @@
 <!doctype html>
-<html lang="en">
+<html lang="hu">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <title>nguyen_van_tamas</title>
   </head>
-  <body>
-    <div id="app"></div>
+  <body class="bg-light">
+    <div class="container py-4">
+
+      <div class="p-5 mb-4 bg-warning text-white rounded-3">
+        <h1 class="display-5 fw-bold">Pékségi Terméknyilvántartás</h1>
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-12 col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Új termék felvétele</h5>
+                </div>
+                <div class="card-body">
+                    <form id="productForm">
+                        <input class="form-control mb-3" id="inputName"
+                          placeholder="Név"
+                          required
+                        >
+
+                        <input class="form-control mb-3" id="inputCategory"
+                          placeholder="Kategória"
+                          required
+                        >
+
+                        <input class="form-control mb-3" id="inputPrice"
+                          type="number" min="1"
+                          placeholder="Ár"
+                          required
+                        >
+
+                        <input class="form-control mb-3" id="inputStock"
+                          type="number" min="1"
+                          placeholder="Napi elérhetőség"
+                          required
+                        >
+
+                        <input class="form-check-input" id="inputAvailability"
+                          type="checkbox"
+                        >
+                        <label class="form-check-label" for="inputAvailability">
+                          Kapható
+                        </label>
+
+                        <button class="btn btn-danger w-100" type="submit">
+                            Feltöltés
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Termékek</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="sortSelect" class="form-label">
+                            Rendezés
+                        </label>
+                      
+                        <select id="sortSelect" class="form-select">
+                            <option value="name-asc">Név szerint növekvő</option>
+                            <option value="name-desc">Név szerint csökkenő</option>
+                            <option value="price-asc">Ár szerint növekvő</option>
+                            <option value="price-desc">Ár szerint csökkenő</option>
+                        </select>
+                    </div>
+                  
+                    <div id="productTableContainer" class="table-responsive">
+                        <div id="app"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="text-center text-muted py-4">
+          Mai dátum: <span id="currentDate"></span>
+        </footer>
+      </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
